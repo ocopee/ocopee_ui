@@ -1,0 +1,59 @@
+# Một cách kết nối đến VPS
+
+Kiểu kết nối `ssh username@hostname` rồi nhập password thì không nói làm gì.
+
+Thường thì các bạn thuê VPS người ta thường quăng cho một file `.pem` hay gì đó rồi chạy lên `ssh -i username@hostname` để kết nối đúng không?
+
+Tui mới mò được sau khi đi lượn khắp các ngõ ngách nó là thế này:
+
+Đầu tiên các bạn phải biết thư mục `.ssh` nằm ở đâu. Thường là ở thư mục gốc, tức là gõ `cd` và enter để đi ra thư mục gốc.
+thì ở đây sẽ có một ề các thư mục bắt đầu bằng dấu `.` trong đó có `.ssh`
+
+## Câu chuyện bắt đầu
+
+Các bạn bên biết trường đời phổ thông có hai kiểu mã hoá, cái này sẽ có bài nói riêng. Nhưng hiện tại cứ nhớ chúng ta xài RSA để mã hoá.
+À mà quên tui xài MacOS với Ubuntu nên chưa thể viết cho Windows nhé!
+Các bạn chạy lệnh này và `enter` đến chết để tạo ra cặp khoá RSA bên trong `.ssh`
+
+```sh
+ssh-keygen
+```
+
+Có thể tạo ở máy các bạn, hoặc máy chủ đều được. Ý nghĩa của việc tạo khoá này là sinh ra cặp khoá thôi.
+
+Sau bước này mặc định sẽ có hai tệp `id_rsa` và `id_rsa.pub` đến đây nếu không có thì máy bạn bị vấn đề hoặc cái bài viết này bị vấn đề rồi bạn tìm bài khác đọc nhé!
+
+> Một mẹo nữa là chịu khó đọc các dòng lệnh xuất ra khi chạy các lệnh ở trình `terminal` đừng hời hợt!
+
+Cái `id_rsa` sẽ dùng làm tệp mật khẩu. Còn cái `id_rsa.pub` cần khai báo ở phía máy chủ như sau:
+
+1. Cũng trong `.ssh` luôn, nó có tệp `authorized_keys`. Mở nó ra, nó là dạng văn bản.
+2. Sao chép nội dung của `id_rsa.pub` bỏ vào trong tệp trên rồi lưu lại.
+3. Thường thì vậy là được rồi nhưng nếu có lỗi thì chạy thử thêm `sudo systemctl restart ssh`
+
+Rồi giờ thử kết nối nữa xong,
+
+```sh
+ssh -i ./id_rsa username@hostname
+```
+
+## Rồi giờ muốn gọn hơn thì sao
+
+Đi đến thư mục chứa `id_rsa` hoặc dời nó vào trong `.ssh` hoặc nó đứng sẵn trong đó rồi thì thôi.
+Gõ lệnh `pwd` để lấy đường dẫn cứng hiện tại có chứa tệp `id_rsa`.
+
+Mấy lệnh này nói sẽ dài dòng, sẽ có bài về bộ lệnh cơ bản cần biết. Tóm lại mình cần lấy được đường dẫn cứng của tệp `id_rsa`.
+
+Cũng trong `.ssh` máy của bạn có tệp `config` thêm cục này vào:
+
+```
+Host tên-rút-gọn
+    HostName ip-hoặc-domain-vào-vps
+    User tài-khoản-vào-vps # thường là root, nhưng không khuyến thích xài root
+    IdentityFile đường-dẫn-cứng-đến-rssa
+    IdentitiesOnly yes
+```
+
+Rồi gõ lưu xong ở bất cứ đâu gõ `ssh tên-rút-gọn` mà nó vào được máy chủ là lụm.
+
+> Lỗi khúc nào nhắn tin hỏi tui liền tui trả lời cho. Liên hệ thì mai mốt tui up lên sau.

@@ -1,0 +1,80 @@
+# Cài đặt Neo4j
+
+Cài đặt Neo4j lên VPS dùng Ubuntu 18
+
+## Thêm nguồn cho Debian
+
+```
+wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
+echo 'deb https://debian.neo4j.com stable latest' | sudo tee /etc/apt/sources.list.d/neo4j.list
+sudo apt-get update
+```
+
+## Chạy lệnh cài
+
+```
+sudo apt-get install neo4j
+```
+
+> Ai ơi nhớ lấy câu này, dùng open-source liên tục upgrade
+
+## Lệnh khởi động và xem trạng thái
+
+```
+sudo systemctl start neo4j.service
+sudo systemctl status neo4j.service
+```
+
+Thấy thế này là lụm:
+
+```
+● neo4j.service - Neo4j Graph Database
+   Loaded: loaded (/lib/systemd/system/neo4j.service; disable
+   Active: active (running) since Sun 2023-12-03 14:07:47 +07
+ Main PID: 9404 (java)
+    Tasks: 1 (limit: 1707)
+   CGroup: /system.slice/neo4j.service
+           └─9404 /usr/bin/java -Xmx128m -classpath /usr/shar
+
+Dec 03 14:07:47 s1 systemd[1]: Started Neo4j Graph Database.
+```
+
+## Đặt mật khẩu
+
+```
+sudo neo4j-admin dbms set-initial-password "khẩu-khẩu-thật-là-khó-nhớ-nhé"
+```
+
+> Lưu ý đổi mật khẩu này là cho user mặc định 'neo4j'. Làm được một lần duy nhất
+> nên phải cẩn thận. Lần sau muốn đổi cần làm cách khác lằng nhằng hơn.
+
+Tệp cấu hình máy chủ neo4j nằm ở: `/etc/neo4j/neo4j.conf` có một số dòng cần lưu
+ý sau:
+
+```
+server.directories.data=/var/lib/neo4j/data
+server.directories.plugins=/var/lib/neo4j/plugins
+dbms.security.auth_enabled=true
+server.default_listen_address=0.0.0.0
+server.bolt.enabled=true
+server.bolt.listen_address=0.0.0.0:7687
+server.bolt.advertised_address=:7687
+server.http.enabled=true
+server.http.listen_address=0.0.0.0:7474
+server.http.advertised_address=:7474
+dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,gds.*,apoc.*
+```
+
+## Plugins
+
+Mặc định chúng ta sẽ có bộ AOPC core nằm ở
+`/var/lib/neo4j/labs/apoc-5.13.0-core.jar`
+
+Để xài kiểu `Date` cần cài thêm tệp ở
+`/var/lib/neo4j/plugins/apoc-5.13.0-extended.jar`
+
+Tệp `apoc-*.jar` nằm trên [trang](https://neo4j.com/labs/apoc/5/installation/)
+của Neo4j nhé
+
+Nhớ dòng này trong tệp cấu hình nếu không sẽ không chạy
+`dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*`
