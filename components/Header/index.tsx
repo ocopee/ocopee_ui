@@ -11,6 +11,7 @@ const navigation = [
   // { name: "Giới thiệu", href: "/about" },
   { name: "Viết", href: "/viet" },
   { name: "IT", href: "/it" },
+  { name: "Open Source", href: "/open-source" },
   // { name: "Tìm kiếm", href: "search" },
 ];
 

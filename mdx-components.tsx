@@ -1,5 +1,8 @@
 import type { MDXComponents } from "mdx/types";
 import NextImage from "next/image";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import prism from 'react-syntax-highlighter/dist/esm/styles/prism/prism';
+import solarizedlight from 'react-syntax-highlighter/dist/esm/styles/prism/solarizedlight';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -44,14 +47,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </blockquote>
       </figure>
     ),
-    code: ({ children }) => (
-      <code
-        className="whitespace-pre overflow-x-scroll"
-        v-text="dataset.bibText"
-      >
-        {children}
-      </code>
-    ),
+    code: ({ children, className }) => {
+      const language = className ? className.replace(/language-/, '') : '';
+      return (
+        <SyntaxHighlighter style={solarizedlight} language={language}>
+          {children}
+        </SyntaxHighlighter>
+      );
+    },
     pre: ({ children }) => (
       <pre className="prettyprint overflow-hidden">{children}</pre>
     ),
