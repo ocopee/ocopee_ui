@@ -12,9 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
-          cache: "yarn"
       - name: Environment
         run: |
+          npm i -g yarn
           echo "${{ secrets.ENV }}" > .env
           echo "NODE_ENV='production'" >> .env
           echo "${{ secrets.RSA }}" > rsa.cert
