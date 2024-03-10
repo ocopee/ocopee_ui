@@ -4,7 +4,7 @@
     "build": "next build",
     "start": "next start -p 4000",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\""
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
