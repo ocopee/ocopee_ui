@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8 min-h-[100vh] mx-auto max-w-xl text-justify">
       <svg
         className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_left,white,transparent)]"

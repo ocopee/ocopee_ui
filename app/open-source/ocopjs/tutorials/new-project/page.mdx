@@ -1,0 +1,76 @@
+# Tạo dự án mới
+
+Bài này sẽ hướng dẫn các bạn cách khởi tạo thủ công dự án OcopJS.
+
+## Chuẩn bị về cơ sở dữ liệu
+
+Trước khi khởi chạy dự án OcopJS bạn cần phải có cơ sở dữ liệu trước. Bài này
+yêu cầu cài MongoDB.
+
+## Khởi tạo
+
+Đầu tiên cần phải tạo thư mục trước:
+
+```sh
+mkdir new-project
+cd new-project
+yarn init
+```
+
+Bắt đầu với các cài đặt cơ bản nhất. Chúng ta có hai gói ở đây: @ocopjs/ocop, là
+thành phần chính của OcopJS. Và @ocopjs/adapter-mongoose, gói giúp kết nối với
+cơ sở dữ liệu MongoDB.
+
+```sh
+yarn add @ocopjs/ocop @ocopjs/adapter-mongoose
+```
+
+## Bước đầu tiên
+
+Sau một số cài đặt trên, ta có thể bắt đầu viết mã. Đầu tiên tạo tệp chính cho
+OcopJS `index.js`. Tệp này nằm ngoài (hay còn gọi là gốc thư mục). Viết như sau:
+
+```js
+const { Ocop } = require("@ocopjs/ocop");
+const { MongooseAdapter } = require("@ocopjs/adapter-mongoose");
+
+const ocop = new Ocop({
+  adapter: new MongooseAdapter({ mongoUri: "mongodb://localhost/ocop" }),
+});
+```
+
+> Lưu ý đảm bảo `mongoUri` đang đúng với MongoDB hiện tại của bạn.
+
+Tiếp tục `export` đối tượng `ocop` để chạy được OcopJS.
+
+```js
+module.exports = {
+  ocop,
+};
+```
+
+Xong bước này chúng ta có thể chạy dự án OcopJS với kết nối MongoDB. Vẫn còn các
+cấu hình cho nhiều tính năng khác.
+
+## Khởi tạo GraphQL API
+
+Như các bước trên, bước này cũng cần cài một số gói:
+
+```
+yarn add @ocopjs/app-graphql
+```
+
+Khai báo gói này trong `index.js`
+
+```js
+const { GraphQLApp } = require("@ocopjs/app-graphql");
+```
+
+Xuất bản ra để chạy cùng dự án OcopJS đã thiết lập ở trên.
+
+```js
+module.exports = {
+  ocop,
+  apps: [new GraphQLApp()],
+};
+```

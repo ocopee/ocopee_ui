@@ -1,8 +1,8 @@
 import type { MDXComponents } from "mdx/types";
 import NextImage from "next/image";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import prism from 'react-syntax-highlighter/dist/esm/styles/prism/prism';
-import solarizedlight from 'react-syntax-highlighter/dist/esm/styles/prism/solarizedlight';
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import prism from "react-syntax-highlighter/dist/esm/styles/prism/prism";
+import solarizedlight from "react-syntax-highlighter/dist/esm/styles/prism/solarizedlight";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -48,7 +48,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </figure>
     ),
     code: ({ children, className }) => {
-      const language = className ? className.replace(/language-/, '') : '';
+      const language = className ? className.replace(/language-/, "") : "";
       return (
         <SyntaxHighlighter style={solarizedlight} language={language}>
           {children}
