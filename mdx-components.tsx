@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     li: ({ children }) => <li className="ml-4">{children}</li>,
 
     h1: ({ children }) => (
-      <h1 className="font-merriweather my-4 text-3xl font-extrabold leading-none text-gray-900 md:text-5xl lg:text-6xl mb-3 text-start">
+      <h1 className="font-merriweather my-4 text-3xl font-extrabold leading-none text-gray-900 md:text-5xl lg:text-6xl mb-8 text-start">
         {children}
       </h1>
     ),
@@ -58,6 +58,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: ({ children }) => (
       <pre className="prettyprint overflow-hidden">{children}</pre>
     ),
+    table: ({ children }) => (
+      <table className="min-w-full divide-y divide-gray-300">{children}</table>
+    ),
+    th: ({ children }) => (
+      <th
+        scope="col"
+        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+      >
+        {children}
+      </th>
+    ),
+
+    td: ({ children }) => (
+      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+        {children}
+      </td>
+    ),
+    tr: ({ children }) => <tr className="even:bg-gray-50">{children}</tr>,
+
     ...components,
   };
 }
