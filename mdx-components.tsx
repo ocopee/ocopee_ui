@@ -20,22 +20,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     h2: ({ children }) => (
-      <h2 className="font-merriweather my-4 text-2xl font-extrabold leading-none text-gray-900 md:text-4xl lg:text-4xl mb-3 text-start">
+      <h2 className="font-merriweather my-4 text-2xl font-extrabold leading-none text-gray-900 md:text-4xl lg:text-4xl mb-6 text-start">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="font-merriweather my-4 text-xl leading-none text-gray-900 md:text-3xl lg:text-3xl mb-3 text-start">
+      <h3 className="font-merriweather my-4 text-xl leading-none text-gray-900 md:text-3xl lg:text-2xl mb-3 text-start">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="font-merriweather my-4 text-md leading-none text-gray-900 md:text-2xl lg:text-2xl mb-3 text-start">
+      <h4 className="font-merriweather my-4 text-md leading-none text-gray-900 md:text-2xl lg:text-xl mb-3 text-start">
         {children}
       </h4>
     ),
     h5: ({ children }) => (
-      <h5 className="font-merriweather my-4 text-sm font-extrabold leading-none text-gray-900 md:text-xl lg:text-xl mb-3 text-start">
+      <h5 className="font-merriweather my-4 text-sm font-extrabold leading-none text-gray-900 md:text-xl lg:text-lg mb-3 text-start">
         {children}
       </h5>
     ),
