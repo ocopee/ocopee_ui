@@ -14,6 +14,19 @@ const withMDX = createMDX({
   },
 });
 
+// const deviceSizes = [640, 768, 1024, 1280, 1536];
+//
+// function devide(cols) {
+//   const map = cols.reduce((map, col) => {
+//     deviceSizes.map((d) => map.set(d / col, 1));
+//     return map;
+//   }, new Map());
+//   return [...map.keys()].sort((a, b) => a - b);
+// }
+//
+// const imageSizes = devide([1, 2, 4]);
+// console.log(imageSizes);
+
 /**
  * @type {import('next').NextConfig}
  */
@@ -26,6 +39,8 @@ const nextConfig = {
 
   images: {
     minimumCacheTTL: 60 * 60 * 24,
+    deviceSizes: [640, 768, 1024, 1280, 1536],
+    imageSizes: [160, 192, 256, 320, 384, 512, 640, 768, 1024, 1280, 1536],
   },
 };
 

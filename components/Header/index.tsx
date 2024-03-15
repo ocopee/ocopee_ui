@@ -7,12 +7,8 @@ import { getAuthedUser } from "components/Auth/hooks";
 import { Fragment } from "react";
 
 const navigation = [
-  // { name: "Dạo", href: "#" },
-  // { name: "Giới thiệu", href: "/about" },
   { name: "Viết", href: "/viet" },
-  { name: "IT", href: "/it" },
   { name: "Open Source", href: "/open-source" },
-  // { name: "Tìm kiếm", href: "search" },
 ];
 
 export default async function Header() {
@@ -21,7 +17,7 @@ export default async function Header() {
     <Fragment>
       <header className="sticky top-0 z-50 backdrop-blur border-b border-slate-900/10 lg:border-0 transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 supports-backdrop-blur:bg-white/95">
         <nav
-          className="mx-auto flex max-w-7xl px-6 lg:px-8 py-3 items-center justify-between"
+          className="mx-auto max-w-7xl px-6 lg:px-8 flex py-3 items-center justify-between"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
