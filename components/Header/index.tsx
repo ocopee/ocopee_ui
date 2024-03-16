@@ -15,7 +15,7 @@ export default async function Header() {
   const user = await getAuthedUser();
   return (
     <Fragment>
-      <header className="sticky top-0 z-50 backdrop-blur border-b border-slate-900/10 lg:border-0 transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 supports-backdrop-blur:bg-white/95">
+      <header className="sticky top-0 z-10 backdrop-blur border-b border-slate-900/10 lg:border-0 transition-colors duration-500 lg:z-20 lg:border-b lg:border-slate-900/10 supports-backdrop-blur:bg-white/95">
         <nav
           className="mx-auto max-w-7xl px-6 lg:px-8 flex py-3 items-center justify-between"
           aria-label="Global"
