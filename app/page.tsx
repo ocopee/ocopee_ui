@@ -2,7 +2,9 @@ import { Fragment } from "react";
 import IMG_PROGRAM from "./_components/undraw_programming_re_kg9v.svg";
 import IMG_BG from "./_components/background.svg";
 import NextImage from "next/image";
+import NextLink from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { Why } from "./_components/Why";
 
 export default function Page() {
   return (
@@ -10,7 +12,7 @@ export default function Page() {
       <section className="mx-auto max-w-7xl px-6 lg:px-8 relative flex flex-wrap gap-6 py-8 md:py-12">
         <NextImage
           src={IMG_BG}
-          alt="Làng gốm Thanh Hà - Hội An"
+          alt="Thằng lập trình viên."
           width={384}
           height={512}
           quality={75}
@@ -26,13 +28,22 @@ export default function Page() {
             Chỉ cần định nghĩa kiểu dữ liệu bạn muốn lưu trữ. OcopJS sẽ sinh tự
             động các giao diện quản thêm, sửa, xoá và API tương ứng.
           </p>
-          <div>
-            <button
+          <div className="flex flex-cols gap-2">
+            <NextLink
+              href={"/open-source/ocopjs/tutorials/new-project"}
               type="button"
               className="bg-amber-900 px-4 py-2 text-sm text-white shadow-sm hover:bg-amber-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
             >
               Bắt đầu nhanh <ArrowRightIcon className="w-4 inline ml-1" />
-            </button>
+            </NextLink>
+
+            <NextLink
+              href={"/open-source/ocopjs/tutorials/new-project"}
+              type="button"
+              className="bg-white px-2 py-2 text-sm font-semibold text-amber-900 shadow-sm ring-1 ring-inset ring-amber-900 hover:bg-amber-50"
+            >
+              Xem tài liệu
+            </NextLink>
           </div>
         </div>
         <div className="min-w-52 flex justify-center items-center flex-1">
@@ -64,6 +75,7 @@ export default function Page() {
           <p>Lưu trữ đúng với cấu hình để nâng cấp chuyên sâu.</p>
         </div>
       </section>
+      <Why />
     </Fragment>
   );
 }
