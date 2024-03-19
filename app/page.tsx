@@ -38,7 +38,7 @@ export default function Page() {
             </NextLink>
 
             <NextLink
-              href={"/open-source/ocopjs/tutorials/new-project"}
+              href={"/open-source/ocopjs"}
               type="button"
               className="bg-white px-2 py-2 text-sm font-semibold text-amber-900 shadow-sm ring-1 ring-inset ring-amber-900 hover:bg-amber-50"
             >
