@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import Image from "next/image";
-import Logo from "public/ocopee.png";
+import Logo from "public/black-logo.png";
 
 import { usePathname } from "next/navigation";
 export default function HeaderMenu({

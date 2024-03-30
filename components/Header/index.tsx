@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import HeaderMenu from "./Menu";
-import Logo from "public/ocopee.png";
+import LOGO_SRC from "public/black-logo.png";
 import { getAuthedUser } from "components/Auth/hooks";
 import { Fragment } from "react";
 
@@ -23,7 +23,7 @@ export default async function Header() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <Image className="h-8 w-auto" src={Logo} alt="" />
+              <Image className="h-8 w-auto" src={LOGO_SRC} alt="ocopee logo" />
             </Link>
           </div>
           <HeaderMenu navigation={navigation} user={user} />

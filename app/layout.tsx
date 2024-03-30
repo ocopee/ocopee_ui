@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: "ocop.ee",
   description: "Blog",
   keywords: ["ocopee"],
+  icons: "black-logo.png",
 };
 
 export default function RootLayout({
