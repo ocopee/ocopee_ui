@@ -20,7 +20,7 @@ export default function Page() {
             className="min-w-lg absolute -z-10 -top-10 right-0 opacity-5"
           />
           <div className="flex flex-col gap-4 justify-center w-full md:max-w-md">
-            <h3 className="font-heading text-md text-gray-400">Mã nguồn mở.</h3>
+            <h3 className="font-heading text-md text-gray-400">Mã nguồn mở</h3>
             <h2 className="text-6xl font-semibold bg-gradient-to-r from-teal-200 to-teal-400 inline-block text-transparent bg-clip-text pb-3">
               OCOP.JS
             </h2>
