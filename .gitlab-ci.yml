@@ -1,0 +1,30 @@
+image: node:20-alpine
+stages:
+  - build
+
+build:
+  environment:
+    name: $CI_COMMIT_BRANCH
+    url: https://ocopee.com
+  stage: build
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    GIT_SUBMODULE_FORCE_HTTPS: "true"
+  before_script:
+    - apk update
+    - apk add rsync openssh
+  script:
+    - chmod +x ./scripts/build-ci.next.sh;
+    - source ./scripts/build-ci.next.sh;
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - .yarn-cache/
+      - node_modules/
+      - .next/cache
+      - .npm/
+  rules:
+    - if: ($CI_COMMIT_BRANCH == "main")
+
