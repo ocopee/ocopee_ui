@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo 'VPS upload: 🚚' $HOST $PORT
+echo 'VPS upload: 🚚 at' $HOST $PORT
 
 # clear
-echo 'VPS upload: clear'
+echo 'VPS upload: clear' $REMOTE
 ssh -p $PORT -i ./rsa.cert -oStrictHostKeyChecking=no $HOST "rm -fr $REMOTE"
 ssh -p $PORT -i ./rsa.cert -oStrictHostKeyChecking=no $HOST "mkdir -p $REMOTE/"
 

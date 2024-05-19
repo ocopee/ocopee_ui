@@ -37,6 +37,9 @@ build:
       - .npm/
   rules:
     - if: ($CI_COMMIT_BRANCH == "main")
+  artifacts:
+    paths:
+      - out.tar.gz
 
 upload:
   environment:
