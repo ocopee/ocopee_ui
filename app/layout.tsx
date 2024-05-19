@@ -36,9 +36,13 @@ export default function RootLayout({
       className={`light ${literata.variable} ${merriweather.variable} h-full bg-white`}
     >
       <body className="font-paragraph h-full">
+        {/**
         <Header />
+        */}
         <main className="min-h-[70vh]">{children}</main>
+        {/**
         <Footer />
+        */}
       </body>
     </html>
   );

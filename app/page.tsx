@@ -7,6 +7,8 @@ import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { Why } from "./_components/Why";
 
 export default function Page() {
+  return <p className='flex justify-center items-center h-screen'>hello world</p>;
+
   return (
     <Fragment>
       <div className="bg-gradient-to-r from-stone-900 via-stone-600 to-stone-900">
