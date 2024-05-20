@@ -67,7 +67,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </aside>
       </section>
       */}
-      {children}
+      <article className="max-w-screen-sm mx-auto">{children}</article>
     </Fragment>
   );
 }

@@ -1,8 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import NextImage from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import prism from "react-syntax-highlighter/dist/esm/styles/prism/prism";
-import solarizedlight from "react-syntax-highlighter/dist/esm/styles/prism/solarizedlight";
+import vsc from "react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -48,16 +47,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </figure>
     ),
     code: ({ children, className }) => {
-      const language = className ? className.replace(/language-/, "") : "";
+      if (!className)
+        return <code className="bg-cyan-100 px-1 rounded-sm">{children}</code>;
       return (
-        <SyntaxHighlighter style={solarizedlight} language={language}>
+        <SyntaxHighlighter
+          language="js"
+          style={vsc}
+          wrapLongLines={true}
+          customStyle={{
+            borderRadius: ".7rem",
+            padding: `1.2rem 1rem`,
+            shadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+          }}
+        >
           {children}
         </SyntaxHighlighter>
       );
     },
-    pre: ({ children }) => (
-      <pre className="prettyprint overflow-hidden">{children}</pre>
-    ),
+    pre: ({ children }) => {
+      return <pre className={"overflow-x-scroll"}>{children}</pre>;
+    },
     table: ({ children }) => (
       <table className="min-w-full divide-y divide-gray-300">{children}</table>
     ),

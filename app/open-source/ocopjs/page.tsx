@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import NextLink from "next/link";
 
 export default function Page() {
   return (
@@ -9,6 +10,9 @@ export default function Page() {
           <h1 className="text-3xl leading-10 font-heading">
             Thư viện phát triển CMS
           </h1>
+          <NextLink href={`/open-source/ocopjs/tutorials/new-project`}>
+            Bắt đầu với 10 phút
+          </NextLink>
         </section>
         <section className="mx-auto max-w-screen-sm px-6">
           <p>
@@ -73,6 +77,11 @@ export default function Page() {
           <h4>Dành cho doanh nghiệp?</h4>
           Hỗ trợ triển khai và tùy biến theo yêu cầu cho doanh nghiệp của bạn.
           <button>Liên hệ</button>
+        </section>
+        <section className="mx-auto max-w-screen-sm px-6 pb-8">
+          <NextLink href={`/open-source/ocopjs/tutorials/new-project`}>
+            Bắt đầu với 10 phút
+          </NextLink>
         </section>
       </article>
     </Fragment>
