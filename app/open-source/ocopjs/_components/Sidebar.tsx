@@ -5,6 +5,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
 import NextLink from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 interface NavItem {
   current?: boolean;
@@ -34,10 +35,10 @@ export function Sidebar({ className = "" }) {
       children: [{ name: "Text", href: "#" }],
     },
   ];
-
+  const pathname = usePathname();
   return (
     <Fragment>
-      <div className="h-screen sticky top-0 px-2 py-8">
+      <div className="h-screen sticky top-0 px-2 py-8 hidden lg:block">
         <nav
           className={clsx(
             "border bg-white rounded-lg shadow-sm px-1.5 py-4",
@@ -46,6 +47,10 @@ export function Sidebar({ className = "" }) {
         >
           <ul role="list" className="max-w-lg">
             {navigation.map((item) => {
+              item.current = pathname == item.href;
+              const nestedCurrent = Boolean(
+                item?.children?.find((i) => i.href == pathname),
+              );
               return (
                 <li key={item.name} className="transition">
                   {!item.children ? (
@@ -59,7 +64,10 @@ export function Sidebar({ className = "" }) {
                       {item.name}
                     </NextLink>
                   ) : (
-                    <Disclosure as="div" defaultOpen={true}>
+                    <Disclosure
+                      as="div"
+                      defaultOpen={item.current || nestedCurrent}
+                    >
                       {({ open }) => (
                         <>
                           <Disclosure.Button
@@ -82,22 +90,25 @@ export function Sidebar({ className = "" }) {
                             />
                           </Disclosure.Button>
                           <Disclosure.Panel as="ul" className="mt-1 px-2">
-                            {item.children.map((subItem: any) => (
-                              <li key={subItem.name}>
-                                <Disclosure.Button
-                                  as="a"
-                                  href={subItem.href}
-                                  className={clsx(
-                                    subItem.current
-                                      ? "bg-gray-50"
-                                      : "hover:bg-slate-100",
-                                    "block rounded-md pr-2 pl-4 py-1 text-sm leading-6 text-gray-700",
-                                  )}
-                                >
-                                  {subItem.name}
-                                </Disclosure.Button>
-                              </li>
-                            ))}
+                            {item.children.map((subItem: NavItem) => {
+                              subItem.current = pathname == subItem.href;
+                              return (
+                                <li key={subItem.name}>
+                                  <Disclosure.Button
+                                    as={NextLink}
+                                    href={subItem.href}
+                                    className={clsx(
+                                      subItem.current
+                                        ? "bg-gray-50"
+                                        : "hover:bg-slate-100",
+                                      "block rounded-md pr-2 pl-4 py-1 text-sm leading-6 text-gray-700",
+                                    )}
+                                  >
+                                    {subItem.name}
+                                  </Disclosure.Button>
+                                </li>
+                              );
+                            })}
                           </Disclosure.Panel>
                         </>
                       )}

@@ -4,7 +4,7 @@ import { Sidebar } from "./Sidebar";
 export function OcopJSLayout({ children }: { children: React.ReactNode }) {
   return (
     <Fragment>
-      <div className="flex max-w-screen-lg mx-auto">
+      <div className="flex max-w-screen-lg mx-auto px-2">
         <Sidebar />
         {children}
       </div>
