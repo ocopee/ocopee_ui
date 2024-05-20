@@ -1,10 +1,16 @@
 import type { MDXComponents } from "mdx/types";
 import NextImage from "next/image";
+import NextLink from "next/link";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import vsc from "react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    a: ({ href, children }) => (
+      <NextLink href={href} className="underline text-cyan-500 px-1">
+        {children}
+      </NextLink>
+    ),
     img: ({ src }) => (
       <NextImage src={src} width={850} height={639} alt="-" className="my-8" />
     ),
@@ -40,10 +46,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     p: ({ children }) => <div className="mb-3">{children}</div>,
     blockquote: ({ children }) => (
-      <figure className="mt-10 border-l border-indigo-600 pl-9">
-        <blockquote className="font-semibold text-gray-900">
-          {children}
-        </blockquote>
+      <figure className="mt-10 border-l border-amber-600 pl-6">
+        <blockquote className="text-gray-900">{children}</blockquote>
       </figure>
     ),
     code: ({ children, className }) => {

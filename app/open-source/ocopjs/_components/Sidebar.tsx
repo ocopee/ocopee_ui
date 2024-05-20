@@ -24,6 +24,10 @@ export function Sidebar({ className = "" }) {
           name: "Bắt đầu nhanh",
           href: `/open-source/ocopjs/tutorials/new-project`,
         },
+        {
+          name: "Liên kết bảng",
+          href: `/open-source/ocopjs/tutorials/relationships`,
+        },
       ],
     },
     {
@@ -89,7 +93,10 @@ export function Sidebar({ className = "" }) {
                               aria-hidden="true"
                             />
                           </Disclosure.Button>
-                          <Disclosure.Panel as="ul" className="mt-1 px-2">
+                          <Disclosure.Panel
+                            as="ul"
+                            className="mt-1 px-2 space-y-1"
+                          >
                             {item.children.map((subItem: NavItem) => {
                               subItem.current = pathname == subItem.href;
                               return (
