@@ -84,14 +84,17 @@ Bảng dữ liệu và sự kết hợp của các trường-dữ-liệu. Nên �
 đầu tiên phải cài gói trường-dữ-liệu:
 
 ```sh
-yarn add @ocopjs/fields
+yarn add @ocopjs/fields @ocopjs/fields-mongoid
 ```
+
+> @ocopjs/fields-mongoid dùng để chạy khoá chính cho MongoDB.
 
 Trong ví dụ này, hãy dùng thử trường-dữ-liệu kiểu Chữ. Khai báo trong index.js
 như sau:
 
 ```js
 const { Text } = require("@ocopjs/fields");
+const { MongoId } = require("@ocopjs/fields-mongoid");
 ```
 
 Tạo bảng-dữ-liệu đầu tiên trong index.js bằng cách thêm ngay sau khi dựng đối
@@ -100,6 +103,7 @@ tượng ocop các cài đặt sau:
 ```js
 ocop.createList("Todo", {
   fields: {
+    id: { type: MongoId },
     name: { type: Text },
   },
 });
@@ -156,3 +160,5 @@ gồm GraphQL API, GraphQL Playground. Từng nãy đã giúp bạn có thể x�
 diện và kết nối chúng với GraphQL API rồi. Trong các hướng dẫn tiếp theo, chúng
 tôi sẽ giúp bạn biết cụ thể hơn về cách sử dụng API. Và chạy giao diện quản trị
 trên trình duyệt để biên tập nội dung một cách dễ dàng.
+
+[Xem mã nguồn mẫu](https://github.com/ocopjs/build/tree/main/apps/new-project)
