@@ -49,9 +49,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ children, className }) => {
       if (!className)
         return <code className="bg-cyan-100 px-1 rounded-sm">{children}</code>;
+
       return (
         <SyntaxHighlighter
-          language="js"
+          language={
+            className == "language-sh"
+              ? "shell"
+              : className.replace("language-", "")
+          }
           style={vsc}
           wrapLongLines={true}
           customStyle={{
