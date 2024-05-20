@@ -25,6 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           fill="url(#pattern-square)"
         />
       </svg>
+      {/**
       <section className="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-12 py-8">
         <aside className="col-span-3 flex flex-col gap-2 h-screen sticky top-14">
           <h3 className="text-xl">Bắt đầu</h3>
@@ -64,8 +65,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             Quản lý công việc
           </NextLink>
         </aside>
-        <article className="col-span-7">{children}</article>
       </section>
+      */}
+      {children}
     </Fragment>
   );
 }

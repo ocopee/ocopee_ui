@@ -65,24 +65,6 @@ export default function Page() {
           </div>
         </section>
       </div>
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 py-8 md:py-12">
-        <div className="w-full bg-red-50 p-5 md:p-3 flex flex-col gap-2">
-          <h3 className="text-lg text-red-900">GraphQL</h3>
-          <p>Đầy đủ các chức năng để chỉnh sửa và hiển thị nội dung.</p>
-        </div>
-        <div className="w-full bg-blue-50 p-5 md:p-3 flex flex-col gap-2">
-          <h3 className="text-lg text-blue-900">ExpressJS</h3>
-          <p>Hoàn toàn tuỳ biến được dựa theo tài liệu gốc.</p>
-        </div>
-        <div className="w-full bg-yellow-50 p-5 md:p-3 flex flex-col gap-2">
-          <h3 className="text-lg text-yellow-900">ReactJS</h3>
-          <p>Phát triển thêm các chức năng trên trang quản trị.</p>
-        </div>
-        <div className="w-full bg-green-50 p-5 md:p-3 flex flex-col gap-2">
-          <h3 className="text-lg text-green-900">MongoDB</h3>
-          <p>Lưu trữ đúng với cấu hình để nâng cấp chuyên sâu.</p>
-        </div>
-      </section>
       <Why />
     </Fragment>
   );
