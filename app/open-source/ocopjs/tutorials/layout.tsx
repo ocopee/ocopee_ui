@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import NextLink from "next/link";
+import { OcopJSLayout } from "../_components/Layout";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -67,7 +67,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </aside>
       </section>
       */}
-      <article className="max-w-screen-sm mx-auto">{children}</article>
+      <OcopJSLayout>
+        <article className="max-w-screen-sm mx-auto flex-1">{children}</article>
+      </OcopJSLayout>
     </Fragment>
   );
 }
