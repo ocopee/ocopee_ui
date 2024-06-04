@@ -4,6 +4,23 @@ stages:
   # - upload
   - restart
 
+docker:
+  environment:
+    name: $CI_COMMIT_BRANCH
+    url: https://ocopee.com
+  stage: build
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    GIT_SUBMODULE_FORCE_HTTPS: "true"
+  before_script:
+    - docker info
+  script:
+    - docker build . -t 192.168.1.157:32000/ocopee:latest
+    - docker images
+    - docker push 192.168.1.157:32000/ocopee
+  rules:
+    - if: ($CI_COMMIT_BRANCH == "development")
+
 build:
   environment:
     name: $CI_COMMIT_BRANCH
