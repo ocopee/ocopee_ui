@@ -1,7 +1,6 @@
 image: node:20-alpine
 stages:
   - build
-  # - upload
   - restart
 
 docker:
@@ -15,9 +14,9 @@ docker:
   before_script:
     - docker info
   script:
-    - docker build . -t 192.168.1.157:32000/ocopee:latest
+    - docker build . -t 192.168.1.157:32000/ocopee_ui:latest
     - docker images
-    - docker push 192.168.1.157:32000/ocopee
+    - docker push 192.168.1.157:32000/ocopee_ui
   rules:
     - if: ($CI_COMMIT_BRANCH == "development")
 
@@ -58,35 +57,6 @@ build:
       - .npm/
   rules:
     - if: ($CI_COMMIT_BRANCH == "main")
-  # artifacts:
-  #   paths:
-  #     - out.tar.gz
-
-# upload:
-#   environment:
-#     name: $CI_COMMIT_BRANCH
-#     url: https://ocopee.com
-#   stage: upload
-#   variables:
-#     GIT_SUBMODULE_STRATEGY: recursive
-#     GIT_SUBMODULE_FORCE_HTTPS: "true"
-#     HOST: 'ocop@route.ocopee.com'
-#     PORT: '28'
-#     RSA: $OCOP_RSA
-#     REMOTE: '/home/ocop/ocopee/ocopee_ui'
-#   before_script:
-#     - apk update
-#     - apk add rsync openssh
-#     - echo "$RSA" > rsa.cert
-#     - chmod 400 ./rsa.cert
-#     - echo "$ENV" > .env
-#     - echo "NODE_ENV='production'" >> .env
-#   needs: ["build"]
-#   script:
-#     - chmod +x ./scripts/upload-ci.sh
-#     - source ./scripts/upload-ci.sh
-#   rules:
-#     - if: ($CI_COMMIT_BRANCH == "main")
 
 restart:
   environment:
